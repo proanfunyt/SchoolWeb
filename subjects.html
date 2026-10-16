@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subjects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg-color:#0A0A0C;--card-bg:#16161A;--card-bg-light:#1B1B20;--text-color:#0558c4;--text-muted:#B4B4BD;--accent-color:#0e93ec;--accent-hover:#12b0c5c0;--accent-deep:#06669e;--accent-pale:#3bc3f8;--border-color:#2B2620;--border-radius:4px;--code-bg:#0d2536}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat','Segoe UI',sans-serif;background-color:var(--bg-color);background-image:radial-gradient(circle at 15% 0%,rgba(14,147,236,.06) 0%,transparent 45%),radial-gradient(circle at 85% 100%,rgba(14,147,236,.05) 0%,transparent 45%);color:var(--text-color);line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:760px;margin:0 auto;padding:90px 24px 60px}
+header{text-align:center;margin-bottom:50px}
+.eyebrow{display:inline-block;color:var(--accent-color);font-size:.72rem;font-weight:500;letter-spacing:4px;text-transform:uppercase;margin-bottom:20px}
+h1{font-family:'Cormorant Garamond',serif;background:linear-gradient(135deg,var(--accent-pale) 0%,var(--accent-color) 45%,var(--accent-hover) 60%,var(--accent-deep) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:3rem;font-weight:600;letter-spacing:.5px;margin-bottom:22px;line-height:1.1}
+.tab-pane h1{font-size:2.3rem;margin-bottom:14px}
+section{position:relative;background:linear-gradient(160deg,var(--card-bg-light) 0%,var(--card-bg) 100%);padding:30px 34px;margin-bottom:26px;border-radius:var(--border-radius);border:1px solid var(--border-color);box-shadow:0 12px 30px -10px rgba(0,0,0,.5)}
+section::before{content:"";position:absolute;top:0;left:0;width:2px;height:100%;background:linear-gradient(180deg,var(--accent-color),transparent)}
+h3{font-family:'Cormorant Garamond',serif;color:var(--accent-pale);font-size:1.5rem;font-weight:600;margin:18px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--border-color)}
+section>h3:first-child{margin-top:0}
+p{color:var(--text-muted);font-size:1rem;font-weight:300;margin-bottom:10px}
+ul{margin:0 0 12px 22px;color:var(--text-muted);font-weight:300}
+li{margin-bottom:6px}
+li b,p b{color:var(--accent-pale);font-weight:500}
+code{background-color:var(--code-bg);color:var(--accent-pale);padding:2px 7px;border-radius:3px;font-family:'Courier New',monospace;font-size:.9rem}
+.tip{background:rgba(14,147,236,.08);border-left:3px solid var(--accent-color);padding:12px 16px;border-radius:0 var(--border-radius) var(--border-radius) 0;margin:14px 0 4px;color:var(--text-muted);font-size:.92rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid var(--accent-color);padding:13px 28px;border-radius:var(--border-radius);font-size:.78rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .25s ease;color:var(--accent-pale)!important;margin:6px 0 12px}
+.btn:hover{background:linear-gradient(135deg,var(--accent-deep),var(--accent-color));color:#fff!important;box-shadow:0 6px 20px -4px rgba(14,147,236,.45)}
+.tab-navigation-wrapper{margin-bottom:30px;border-bottom:1px solid var(--border-color)}
+.tab-navigation{display:flex;gap:10px;overflow-x:auto;white-space:nowrap;padding-bottom:10px;margin-bottom:-1px;scrollbar-width:thin;scrollbar-color:var(--accent-color) transparent}
+.tab-button{background:transparent;border:none;color:var(--text-muted);padding:12px 24px;font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;transition:all .3s ease;border-bottom:2px solid transparent;flex-shrink:0}
+.tab-button:hover{color:var(--accent-pale)}
+.tab-button.active{color:var(--accent-color);border-bottom:2px solid var(--accent-color)}
+.tab-pane{display:none;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--border-radius);padding:30px}
+.tab-pane.active{display:block}
+.tab-pane section:last-child{margin-bottom:0}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<span class="eyebrow">Antonio</span>
+<h1>Subjects</h1>
+<span class="eyebrow">School</span>
+</header>
+
+<div class="tab-navigation-wrapper"><div class="tab-navigation">
+<button class="tab-button active" onclick="switchTab(event,'tab1')">Mathematics</button>
+<button class="tab-button" onclick="switchTab(event,'tab2')">English</button>
+<button class="tab-button" onclick="switchTab(event,'tab3')">Chemistry</button>
+<button class="tab-button" onclick="switchTab(event,'tab4')">Physics</button>
+<button class="tab-button" onclick="switchTab(event,'tab5')">Biology</button>
+<button class="tab-button" onclick="switchTab(event,'tab6')">History</button>
+<button class="tab-button" onclick="switchTab(event,'tab7')">Geography</button>
+<button class="tab-button" onclick="switchTab(event,'tab8')">Religious Education</button>
+<button class="tab-button" onclick="switchTab(event,'tab9')">French</button>
+<button class="tab-button" onclick="switchTab(event,'tab10')">Art &amp; Design</button>
+<button class="tab-button" onclick="switchTab(event,'tab11')">Music</button>
+<button class="tab-button" onclick="switchTab(event,'tab12')">Drama</button>
+<button class="tab-button" onclick="switchTab(event,'tab13')">Technology &amp; IT</button>
+<button class="tab-button" onclick="switchTab(event,'tab14')">Physical Education</button>
+<button class="tab-button" onclick="switchTab(event,'tab15')">PSHE</button>
+</div></div>
+
+<div class="tab-content">
+
+<div id="tab1" class="tab-pane active">
+<section>
+<h1>Mathematics</h1>
+<p>Maths (short for Mathematics) is an <code>Essential</code> subject. You need it for most other subjects: science uses it for formulas and graphs, geography for scale and data, technology for measuring, and music for rhythm and timing. It is also used every day for money, cooking, travel and time.</p>
+<div class="tip"><b>Main areas:</b> Number, Algebra, Ratio &amp; Proportion, Geometry &amp; Measures, Probability, Statistics.</div>
+</section>
+<section>
+<h3>What do you do in maths?</h3>
+<p>The four basic operations are the foundation of everything else:</p>
+<ul>
+<li><b>Addition (+)</b> – putting numbers together: 27 + 15 = 42</li>
+<li><b>Subtraction (−)</b> – taking away: 50 − 18 = 32</li>
+<li><b>Multiplication (×)</b> – repeated adding, also called "times": 7 × 8 = 56</li>
+<li><b>Division (÷)</b> – sharing equally: 56 ÷ 8 = 7</li>
+</ul>
+<p>Need to check your sums? Use the calculator:</p>
+<a href="calculator.html" class="btn">Open calculator</a>
+</section>
+<section>
+<h3>Order of operations (BIDMAS)</h3>
+<p>When a sum has several operations, do them in this order: <b>B</b>rackets, <b>I</b>ndices (powers), <b>D</b>ivision and <b>M</b>ultiplication (left to right), <b>A</b>ddition and <b>S</b>ubtraction (left to right).</p>
+<p>Example: <code>3 + 4 × 2</code> = 3 + 8 = <b>11</b> (not 14!). With brackets: <code>(3 + 4) × 2</code> = <b>14</b>.</p>
+</section>
+<section>
+<h3>Algebra</h3>
+<p>Algebra uses letters to stand for unknown numbers. Your job is to find the missing value.</p>
+<p>Example: if a = 20, what is b when a + b = 34?</p>
+<p>20 + b = 34, so b = 34 − 20, so <code>b = 14</code>.</p>
+<p>Harder example: <code>3x + 5 = 20</code>. Subtract 5 from both sides: 3x = 15. Divide both sides by 3: <code>x = 5</code>.</p>
+<div class="tip"><b>Golden rule:</b> whatever you do to one side of an equation, you must do to the other side.</div>
+</section>
+<section>
+<h3>Fractions, decimals and percentages</h3>
+<p>These are three ways of writing the same thing: ½ = 0.5 = 50%. To turn a fraction into a decimal, divide the top by the bottom (3 ÷ 4 = 0.75). To turn a decimal into a percentage, multiply by 100.</p>
+<ul>
+<li><b>Finding 10%:</b> divide by 10. So 10% of £80 = £8.</li>
+<li><b>Finding 25%:</b> divide by 4. So 25% of £80 = £20.</li>
+<li><b>Adding fractions:</b> make the bottoms (denominators) the same first: ½ + ¼ = 2/4 + 1/4 = <b>3/4</b>.</li>
+</ul>
+</section>
+<section>
+<h3>Geometry and measures</h3>
+<ul>
+<li><b>Area of a rectangle</b> = length × width</li>
+<li><b>Area of a triangle</b> = ½ × base × height</li>
+<li><b>Perimeter</b> = the distance all the way round a shape</li>
+<li><b>Circumference of a circle</b> = π × diameter (π ≈ 3.14)</li>
+<li><b>Area of a circle</b> = π × radius²</li>
+<li><b>Angles:</b> in a triangle they add up to 180°, on a straight line to 180°, and round a point to 360°.</li>
+</ul>
+</section>
+<section>
+<h3>Probability and statistics</h3>
+<p>Probability is how likely something is, from 0 (impossible) to 1 (certain). <code>Probability = number of ways it can happen ÷ total number of outcomes</code>. Chance of rolling a 4 on a dice = 1/6.</p>
+<p>For a set of data, you can find the <b>mean</b> (add up, divide by how many), the <b>median</b> (middle value when in order), the <b>mode</b> (most common) and the <b>range</b> (biggest − smallest).</p>
+<p>Example: 2, 4, 4, 6, 9 → mean = 25 ÷ 5 = 5, median = 4, mode = 4, range = 7.</p>
+</section>
+</div>
+
+<div id="tab2" class="tab-pane">
+<section>
+<h1>English</h1>
+<p>English develops how you read, write, speak and listen. It helps in every other subject because you need to understand questions and explain your ideas clearly.</p>
+</section>
+<section>
+<h3>Reading</h3>
+<p>You study novels, plays, poems and non-fiction such as articles and speeches. You learn to find information, work out what the writer means beyond the words (inference), and explain how the writer makes you feel.</p>
+<ul>
+<li><b>Simile:</b> compares using "like" or "as" (as cold as ice)</li>
+<li><b>Metaphor:</b> says something is something else (the classroom was a zoo)</li>
+<li><b>Personification:</b> gives human qualities to objects (the wind whispered)</li>
+<li><b>Alliteration:</b> repeated starting sounds (silent snakes slither)</li>
+<li><b>Onomatopoeia:</b> words that sound like their meaning (crash, buzz)</li>
+</ul>
+</section>
+<section>
+<h3>Writing</h3>
+<p>You write stories, descriptions, letters, speeches, reviews and persuasive pieces. Good writing has a clear purpose, a good opening, paragraphs, and a variety of sentence lengths.</p>
+<ul>
+<li>Use <b>paragraphs</b> – start a new one for a new idea, place, time or speaker.</li>
+<li>Use <b>punctuation</b> correctly: capital letters, full stops, commas, apostrophes, speech marks.</li>
+<li>Use <b>connectives</b> such as however, therefore, meanwhile and although.</li>
+<li>Always <b>proofread</b> – read your work through to catch mistakes.</li>
+</ul>
+<div class="tip"><b>Persuasion trick (AFOREST):</b> Alliteration, Facts, Opinions, Rhetorical questions, Emotive language, Statistics, Triples (three examples).</div>
+</section>
+<section>
+<h3>Answering questions: PEE / PEEL</h3>
+<p><b>P</b>oint – make your argument. <b>E</b>vidence – a short quotation. <b>E</b>xplain – say what it shows and the effect on the reader. <b>L</b>ink – connect back to the question.</p>
+</section>
+<section>
+<h3>Shakespeare and poetry</h3>
+<p>Shakespeare wrote around 37 plays about 400 years ago, including <i>Romeo and Juliet</i>, <i>Macbeth</i> and <i>A Midsummer Night's Dream</i>. They include comedies, tragedies and histories. In poetry look for rhyme, rhythm, stanzas (verses), imagery and tone.</p>
+</section>
+<section>
+<h3>Spelling, grammar and speaking</h3>
+<ul>
+<li>Nouns name things, verbs are actions, adjectives describe nouns, adverbs describe verbs.</li>
+<li>Common mix-ups: <b>their / there / they're</b>, <b>your / you're</b>, <b>to / too / two</b>.</li>
+<li>In speaking and listening you give presentations, take part in discussions and learn to speak clearly and confidently.</li>
+</ul>
+</section>
+</div>
+
+<div id="tab3" class="tab-pane">
+<section>
+<h1>Chemistry</h1>
+<p>Chemistry is the study of matter: what everything is made of, how it behaves, and how it changes. Cooking, cleaning, medicines, plastics and batteries all rely on chemistry.</p>
+</section>
+<section>
+<h3>States of matter</h3>
+<ul>
+<li><b>Solid:</b> particles packed tightly, vibrate in place, fixed shape.</li>
+<li><b>Liquid:</b> particles close but able to slide past each other, takes the shape of its container.</li>
+<li><b>Gas:</b> particles far apart and moving fast, fills any container.</li>
+</ul>
+<p>Changes of state: melting (solid → liquid), freezing (liquid → solid), evaporating/boiling (liquid → gas), condensing (gas → liquid), subliming (solid → gas). Water melts at 0°C and boils at 100°C.</p>
+</section>
+<section>
+<h3>Atoms, elements, compounds</h3>
+<p>An <b>atom</b> is the smallest part of an element. Atoms have a nucleus containing <b>protons</b> (positive) and <b>neutrons</b> (no charge), with <b>electrons</b> (negative) around it. An <b>element</b> contains only one type of atom (oxygen, iron). A <b>compound</b> is two or more elements chemically joined (water, H₂O). A <b>mixture</b> is not chemically joined and can be separated.</p>
+</section>
+<section>
+<h3>The Periodic Table</h3>
+<p>Elements are arranged by atomic number. Columns are <b>groups</b> and rows are <b>periods</b>. Group 1 are the reactive alkali metals (lithium, sodium, potassium), Group 7 are the halogens, and Group 0 are the unreactive noble gases such as helium and neon.</p>
+</section>
+<section>
+<h3>Chemical reactions</h3>
+<p>In a reaction, <b>reactants</b> turn into <b>products</b>. Signs of a reaction: colour change, fizzing, heat or light given off, a new solid forming. Mass is never lost: atoms are only rearranged.</p>
+<p>Word equation example: <code>magnesium + oxygen → magnesium oxide</code></p>
+<p>Acid reactions: <code>acid + metal → salt + hydrogen</code>, <code>acid + alkali → salt + water</code> (neutralisation).</p>
+</section>
+<section>
+<h3>Acids, alkalis and separating mixtures</h3>
+<p>The <b>pH scale</b> runs from 0 to 14: below 7 is acidic, 7 is neutral, above 7 is alkaline. Universal indicator turns red in strong acid, green in neutral and purple in strong alkali.</p>
+<p>Separating mixtures: <b>filtration</b> (insoluble solid from liquid), <b>evaporation</b> (get dissolved solid back), <b>distillation</b> (separate liquids by boiling point), <b>chromatography</b> (separate coloured substances in ink).</p>
+<div class="tip"><b>Lab safety:</b> tie back hair, wear goggles, never taste anything, walk don't run, and report spills straight away.</div>
+</section>
+</div>
+
+<div id="tab4" class="tab-pane">
+<section>
+<h1>Physics</h1>
+<p>Physics explains how the universe works: motion, forces, energy, light, sound, electricity and space. It is the science behind rockets, phones, rollercoasters and power stations.</p>
+</section>
+<section>
+<h3>Forces</h3>
+<p>A force is a push or a pull, measured in <b>newtons (N)</b>. Types include gravity, friction, air resistance, upthrust and magnetism. When forces are balanced, an object stays still or moves at a steady speed. When unbalanced, it speeds up, slows down or changes direction.</p>
+<p><code>speed = distance ÷ time</code>. Example: 100 m in 20 s = 5 m/s.</p>
+<p><code>weight = mass × gravitational field strength</code> (about 10 N/kg on Earth). A 5 kg bag weighs about 50 N.</p>
+</section>
+<section>
+<h3>Energy</h3>
+<p>Energy is measured in <b>joules (J)</b>. Stores include kinetic (movement), gravitational potential, chemical, thermal, elastic and nuclear. Energy cannot be created or destroyed, only transferred. This is the <b>conservation of energy</b>. Some is always wasted as heat.</p>
+<ul>
+<li><b>Renewable:</b> solar, wind, hydroelectric, tidal, geothermal.</li>
+<li><b>Non-renewable:</b> coal, oil, gas, nuclear fuel.</li>
+</ul>
+</section>
+<section>
+<h3>Waves: light and sound</h3>
+<p><b>Light</b> travels in straight lines at about 300,000 km/s and can be reflected (mirrors) or refracted (bent by glass or water). White light splits into the spectrum: red, orange, yellow, green, blue, indigo, violet. <b>Sound</b> is a vibration that needs a medium, so it cannot travel through a vacuum. Higher frequency means higher pitch, bigger amplitude means louder.</p>
+</section>
+<section>
+<h3>Electricity and magnetism</h3>
+<p>Current is measured in amps (A), voltage in volts (V) and resistance in ohms (Ω). <code>V = I × R</code>. In a <b>series</b> circuit there is one loop; in a <b>parallel</b> circuit there are branches, so if one bulb breaks the others stay on. Magnets have north and south poles: opposites attract, likes repel.</p>
+</section>
+<section>
+<h3>Space</h3>
+<p>The Sun is a star at the centre of our solar system with eight planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune. The Earth takes one year to orbit the Sun and spins once a day. Seasons happen because the Earth is tilted at 23.5°. The Moon orbits the Earth about every 28 days.</p>
+</section>
+</div>
+
+<div id="tab5" class="tab-pane">
+<section>
+<h1>Biology</h1>
+<p>Biology is the study of living things: how they work, grow, reproduce and interact with each other and their environment.</p>
+<div class="tip"><b>MRS GREN</b> – the seven life processes: Movement, Respiration, Sensitivity, Growth, Reproduction, Excretion, Nutrition.</div>
+</section>
+<section>
+<h3>Cells</h3>
+<p>Cells are the building blocks of life. Animal cells have a <b>nucleus</b> (control centre), <b>cytoplasm</b> (where reactions happen), <b>cell membrane</b> (controls what goes in and out) and <b>mitochondria</b> (release energy). Plant cells also have a <b>cell wall</b>, <b>chloroplasts</b> (photosynthesis) and a <b>vacuole</b>.</p>
+<p>Organisation: cell → tissue → organ → organ system → organism.</p>
+</section>
+<section>
+<h3>Human body systems</h3>
+<ul>
+<li><b>Digestive:</b> breaks food down. Mouth → oesophagus → stomach → small intestine (absorbs nutrients) → large intestine (absorbs water).</li>
+<li><b>Circulatory:</b> heart, blood and vessels carry oxygen and nutrients.</li>
+<li><b>Respiratory:</b> lungs take in oxygen and remove carbon dioxide.</li>
+<li><b>Skeletal and muscular:</b> support, protection and movement.</li>
+<li><b>Nervous:</b> brain, spinal cord and nerves send signals.</li>
+</ul>
+<p>A balanced diet needs carbohydrates (energy), proteins (growth and repair), fats, vitamins, minerals, fibre and water.</p>
+</section>
+<section>
+<h3>Photosynthesis and respiration</h3>
+<p><b>Photosynthesis</b> (in plants): <code>carbon dioxide + water → glucose + oxygen</code>, using light energy absorbed by chlorophyll.</p>
+<p><b>Aerobic respiration</b> (in all living things): <code>glucose + oxygen → carbon dioxide + water</code>, releasing energy.</p>
+</section>
+<section>
+<h3>Reproduction, genetics and evolution</h3>
+<p>In humans, fertilisation happens when a sperm cell joins an egg cell. DNA in the nucleus is organised into genes, which carry instructions for your characteristics, and you inherit half from each parent. Charles Darwin's theory of <b>natural selection</b> says organisms best adapted to their environment survive and pass on their features, so species change over time.</p>
+</section>
+<section>
+<h3>Ecosystems</h3>
+<p>A food chain shows energy flow: <b>grass → rabbit → fox</b>. Producers make food, consumers eat, and decomposers break down dead matter. Many food chains linked together form a food web. Humans affect ecosystems through pollution, deforestation and climate change, so protecting biodiversity matters.</p>
+</section>
+</div>
+
+<div id="tab6" class="tab-pane">
+<section>
+<h1>History</h1>
+<p>History is the study of the past. It helps us understand why the world is the way it is today, and teaches you to weigh up evidence and build arguments.</p>
+</section>
+<section>
+<h3>Typical topics</h3>
+<ul>
+<li><b>Romans and Anglo-Saxons:</b> Roman invasion of Britain in AD 43, Hadrian's Wall, then Saxon kingdoms.</li>
+<li><b>1066 and the Normans:</b> William the Conqueror won the Battle of Hastings, built castles and ordered the Domesday Book in 1086.</li>
+<li><b>Medieval life:</b> the feudal system, the Church, Magna Carta (1215), the Black Death (1348).</li>
+<li><b>The Tudors:</b> Henry VIII, the break from Rome, Elizabeth I and the Spanish Armada (1588).</li>
+<li><b>Industrial Revolution:</b> factories, steam power, railways and rapid growth of towns in the 1700s and 1800s.</li>
+<li><b>The 20th century:</b> World War I (1914–1918), World War II (1939–1945), the Holocaust, and the Cold War.</li>
+</ul>
+</section>
+<section>
+<h3>Historical skills</h3>
+<ul>
+<li><b>Chronology:</b> placing events in the right order.</li>
+<li><b>Cause and consequence:</b> why things happened and what resulted.</li>
+<li><b>Change and continuity:</b> what changed and what stayed the same.</li>
+<li><b>Significance:</b> how important something was.</li>
+<li><b>Source analysis:</b> ask <i>Who made it? When? Why? Is it reliable?</i> Use <b>OPCVL</b>: Origin, Purpose, Content, Value, Limitations.</li>
+</ul>
+<div class="tip"><b>Primary sources</b> come from the time (diaries, photos). <b>Secondary sources</b> are written later (textbooks, documentaries).</div>
+</section>
+<section>
+<h3>Key terms</h3>
+<p><b>BC/AD</b> – before and after the birth of Jesus; <b>century</b> – 100 years (1800s = 19th century); <b>empire</b> – lands ruled by one power; <b>monarchy</b> – ruled by a king or queen; <b>revolution</b> – a major sudden change.</p>
+</section>
+</div>
+
+<div id="tab7" class="tab-pane">
+<section>
+<h1>Geography</h1>
+<p>Geography studies the Earth, its landscapes, climates, people and places, and how humans and the environment affect each other. It has two main strands: <b>physical</b> (natural) and <b>human</b> (people).</p>
+</section>
+<section>
+<h3>Physical geography</h3>
+<ul>
+<li><b>Rivers:</b> source → tributaries → meanders → mouth. Processes: erosion, transportation, deposition. Features include waterfalls, V-shaped valleys, floodplains and oxbow lakes.</li>
+<li><b>Coasts:</b> cliffs, wave-cut platforms, beaches, headlands and bays, caused by wave erosion and deposition.</li>
+<li><b>Plate tectonics:</b> the Earth's crust is split into plates. Earthquakes, volcanoes and fold mountains occur at plate boundaries.</li>
+<li><b>Weather and climate:</b> weather is day-to-day; climate is the average over many years. Rainfall types: relief, frontal, convectional.</li>
+</ul>
+</section>
+<section>
+<h3>Human geography</h3>
+<ul>
+<li><b>Population:</b> why populations grow, migration, and why people move to cities (urbanisation).</li>
+<li><b>Settlements:</b> villages, towns and cities, and how land is used.</li>
+<li><b>Development:</b> differences between richer and poorer countries (HICs and LICs) and how to reduce them.</li>
+<li><b>Sustainability:</b> meeting our needs without harming future generations, and tackling climate change.</li>
+</ul>
+</section>
+<section>
+<h3>Map skills</h3>
+<p>Maps use a <b>scale</b> (1:50,000 means 1 cm on the map = 500 m on the ground), a <b>key</b> for symbols, and <b>grid references</b>: eastings (along the bottom) first, then northings (up the side) – "along the corridor, then up the stairs". Compass points: N, NE, E, SE, S, SW, W, NW. Contour lines show height; lines close together mean a steep slope.</p>
+<div class="tip"><b>The Earth's layers:</b> inner core, outer core, mantle, crust. The seven continents: Africa, Antarctica, Asia, Australia/Oceania, Europe, North America, South America.</div>
+</section>
+</div>
+
+<div id="tab8" class="tab-pane">
+<section>
+<h1>Religious Education</h1>
+<p>RE explores religions and beliefs, big questions about life, and how people live their faith. You do not have to follow a religion to study it: the aim is to understand and respect different views.</p>
+</section>
+<section>
+<h3>Major world religions</h3>
+<ul>
+<li><b>Christianity:</b> follows Jesus Christ. Holy book: the Bible. Place of worship: church. Key festivals: Christmas and Easter.</li>
+<li><b>Islam:</b> follows the teachings of the Prophet Muhammad. Holy book: the Qur'an. Place of worship: mosque. Five Pillars: faith, prayer, charity, fasting in Ramadan, pilgrimage to Mecca (Hajj).</li>
+<li><b>Judaism:</b> holy book is the Torah. Place of worship: synagogue. Key festivals: Passover, Yom Kippur, Hanukkah. Shabbat is the weekly day of rest.</li>
+<li><b>Hinduism:</b> many gods seen as forms of one Supreme Being (Brahman). Beliefs include karma and reincarnation. Festival: Diwali.</li>
+<li><b>Sikhism:</b> founded by Guru Nanak. Believe in one God. Holy book: Guru Granth Sahib. Place of worship: gurdwara.</li>
+<li><b>Buddhism:</b> follows the Buddha's teachings. The Four Noble Truths and Eightfold Path lead to ending suffering. Practise meditation.</li>
+</ul>
+</section>
+<section>
+<h3>Big questions and ethics</h3>
+<ul>
+<li>Is there a God? Why is there suffering in the world?</li>
+<li>What happens after we die?</li>
+<li>Right and wrong: where do morals come from?</li>
+<li>Issues such as war and peace, poverty, animal rights, the environment, and equality.</li>
+</ul>
+<div class="tip"><b>Useful words:</b> <b>faith</b> – strong belief; <b>worship</b> – showing devotion; <b>atheist</b> – believes there is no god; <b>agnostic</b> – unsure if there is a god; <b>humanist</b> – non-religious view based on reason and human values.</div>
+</section>
+</div>
+
+<div id="tab9" class="tab-pane">
+<section>
+<h1>French</h1>
+<p>French (<i>le français</i>) is spoken by over 300 million people across France, Belgium, Switzerland, Canada and parts of Africa. You build skills in speaking, listening, reading and writing.</p>
+</section>
+<section>
+<h3>Greetings and basics</h3>
+<ul>
+<li>Bonjour – hello / good day</li>
+<li>Salut – hi</li>
+<li>Au revoir – goodbye</li>
+<li>Comment ça va? – how are you? → Ça va bien, merci.</li>
+<li>Je m'appelle Antonio – my name is Antonio</li>
+<li>S'il vous plaît / Merci – please / thank you</li>
+<li>Je ne comprends pas – I don't understand</li>
+</ul>
+</section>
+<section>
+<h3>Numbers, days and colours</h3>
+<p><b>Numbers:</b> un, deux, trois, quatre, cinq, six, sept, huit, neuf, dix (1–10); vingt (20), cent (100).</p>
+<p><b>Days:</b> lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche.</p>
+<p><b>Colours:</b> rouge (red), bleu (blue), vert (green), jaune (yellow), noir (black), blanc (white).</p>
+</section>
+<section>
+<h3>Grammar</h3>
+<p>Nouns are <b>masculine</b> (<i>le / un</i>) or <b>feminine</b> (<i>la / une</i>); plurals use <i>les</i>. Adjectives usually come after the noun and match it (<i>une maison blanche</i>).</p>
+<p>Key verbs:</p>
+<ul>
+<li><b>être (to be):</b> je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont</li>
+<li><b>avoir (to have):</b> j'ai, tu as, il/elle a, nous avons, vous avez, ils/elles ont</li>
+<li><b>aller (to go):</b> je vais, tu vas, il/elle va, nous allons, vous allez, ils/elles vont</li>
+</ul>
+<p>Regular <b>-er</b> verbs (like <i>jouer</i>, to play): remove -er, add -e, -es, -e, -ons, -ez, -ent. Example: <i>je joue au football</i>.</p>
+<div class="tip"><b>Tip:</b> Learn vocabulary little and often, say words out loud, and use flashcards.</div>
+</section>
+</div>
+
+<div id="tab10" class="tab-pane">
+<section>
+<h1>Art &amp; Design</h1>
+<p>Art lets you express ideas and feelings visually while learning techniques and studying the work of artists from different times and cultures.</p>
+</section>
+<section>
+<h3>The formal elements</h3>
+<ul>
+<li><b>Line:</b> straight, curved, thick, thin, broken.</li>
+<li><b>Shape and form:</b> shapes are flat (2D); forms have depth (3D).</li>
+<li><b>Tone:</b> how light or dark something is, used to create shading and a 3D effect.</li>
+<li><b>Colour:</b> hue, brightness and mood.</li>
+<li><b>Texture:</b> how something feels or looks like it feels.</li>
+<li><b>Pattern:</b> repeated shapes or lines.</li>
+<li><b>Space and composition:</b> how things are arranged on the page.</li>
+</ul>
+</section>
+<section>
+<h3>Colour theory</h3>
+<p><b>Primary colours:</b> red, yellow, blue. <b>Secondary:</b> orange, green, purple (made by mixing two primaries). <b>Complementary colours</b> sit opposite each other on the colour wheel (red/green, blue/orange) and make each other stand out. <b>Warm</b> colours feel energetic; <b>cool</b> colours feel calm. A <b>tint</b> is a colour plus white; a <b>shade</b> is a colour plus black.</p>
+</section>
+<section>
+<h3>Techniques and artists</h3>
+<ul>
+<li><b>Drawing:</b> pencil, charcoal, pen, observational drawing, perspective.</li>
+<li><b>Painting:</b> watercolour, acrylic, blending and layering.</li>
+<li><b>Printmaking, collage, sculpture and clay work.</b></li>
+<li><b>Artists to explore:</b> Vincent van Gogh, Claude Monet, Pablo Picasso, Andy Warhol, Frida Kahlo, Banksy.</li>
+</ul>
+<div class="tip"><b>Sketchbook skills:</b> experiment, annotate your work, evaluate what went well, and show how your ideas develop.</div>
+</section>
+</div>
+
+<div id="tab11" class="tab-pane">
+<section>
+<h1>Music</h1>
+<p>Music is about listening, performing and composing. You learn to play instruments, sing, read notation and understand how music is put together.</p>
+</section>
+<section>
+<h3>The elements of music</h3>
+<ul>
+<li><b>Pitch:</b> how high or low a note is.</li>
+<li><b>Duration:</b> how long notes last, and rhythm.</li>
+<li><b>Dynamics:</b> how loud or quiet: <i>piano</i> (p, quiet), <i>forte</i> (f, loud), <i>crescendo</i> (getting louder).</li>
+<li><b>Tempo:</b> the speed: <i>allegro</i> (fast), <i>moderato</i> (medium), <i>adagio</i> (slow).</li>
+<li><b>Timbre:</b> the tone quality of a sound.</li>
+<li><b>Texture:</b> how many layers: solo, melody with accompaniment, harmony.</li>
+<li><b>Structure:</b> the form, such as verse–chorus, ABA, or rondo.</li>
+</ul>
+</section>
+<section>
+<h3>Notation</h3>
+<p>Music is written on a <b>stave</b> of five lines. The <b>treble clef</b> is for higher notes. Note values: semibreve = 4 beats, minim = 2, crotchet = 1, quaver = ½. Notes on the lines of the treble clef: <b>E G B D F</b> ("Every Good Boy Deserves Fruit"); in the spaces: <b>F A C E</b>.</p>
+</section>
+<section>
+<h3>Instruments and styles</h3>
+<p>Orchestra families: <b>strings</b> (violin, cello), <b>woodwind</b> (flute, clarinet), <b>brass</b> (trumpet, trombone), <b>percussion</b> (drums, xylophone). You may also learn keyboard, guitar, ukulele and singing. Styles you may study include classical, blues, jazz, pop, rock, reggae and film music.</p>
+<div class="tip"><b>Scales:</b> a major scale sounds happy and a minor scale sounds sad. Practise a little every day rather than a lot once a week.</div>
+</section>
+</div>
+
+<div id="tab12" class="tab-pane">
+<section>
+<h1>Drama</h1>
+<p>Drama builds confidence, creativity, teamwork and communication. You create, perform and evaluate scenes, using your voice, face and body to tell stories.</p>
+</section>
+<section>
+<h3>Performance skills</h3>
+<ul>
+<li><b>Voice:</b> volume, pitch, pace, pause, tone and accent.</li>
+<li><b>Body language:</b> posture, gesture, facial expression, eye contact and movement.</li>
+<li><b>Proxemics:</b> the distance between characters and what it says about their relationship.</li>
+<li><b>Focus:</b> staying in character and concentrating.</li>
+</ul>
+</section>
+<section>
+<h3>Drama techniques</h3>
+<ul>
+<li><b>Freeze frame (still image):</b> a "photograph" made with your body.</li>
+<li><b>Thought-tracking:</b> speaking a character's thoughts aloud.</li>
+<li><b>Hot-seating:</b> being questioned in character.</li>
+<li><b>Role play:</b> acting out a situation.</li>
+<li><b>Mime:</b> acting without words.</li>
+<li><b>Flashback / flash-forward:</b> showing earlier or later events.</li>
+<li><b>Split stage:</b> showing two scenes at once.</li>
+</ul>
+</section>
+<section>
+<h3>Staging and theatre words</h3>
+<p>Stage types: <b>proscenium arch</b>, <b>thrust</b>, <b>in the round</b>, <b>traverse</b>. Stage directions: upstage (back), downstage (front), stage left and stage right (from the actor's point of view). Design elements: <b>set, costume, lighting, sound, props, make-up</b>.</p>
+<div class="tip"><b>Evaluating:</b> say what you did, what worked well, and what you would improve. Always be respectful when giving feedback to others.</div>
+</section>
+</div>
+
+<div id="tab13" class="tab-pane">
+<section>
+<h1>Technology &amp; IT</h1>
+<p>This subject covers designing and making products, and using computers and digital skills safely and creatively. It combines Design &amp; Technology with Computing.</p>
+</section>
+<section>
+<h3>Design and make</h3>
+<p>The design process: <b>research → specification → ideas → develop → make → evaluate</b>. A specification lists what your product must do.</p>
+<ul>
+<li><b>Materials:</b> woods (hardwoods, softwoods), metals, plastics (thermo and thermosetting), textiles.</li>
+<li><b>Tools and safety:</b> measure twice, cut once; wear safety goggles and aprons; follow workshop rules.</li>
+<li><b>Sustainability:</b> reduce, reuse, recycle.</li>
+<li><b>Food technology:</b> hygiene, healthy eating, cooking skills.</li>
+</ul>
+</section>
+<section>
+<h3>Computing</h3>
+<ul>
+<li><b>Algorithms:</b> step-by-step instructions to solve a problem, shown with flowcharts or pseudocode.</li>
+<li><b>Programming:</b> using Scratch or Python. Key ideas: variables, sequence, selection (if/else), iteration (loops).</li>
+<li><b>Binary:</b> computers use 1s and 0s. 1 byte = 8 bits. Binary 101 = 5 (4 + 0 + 1).</li>
+<li><b>Hardware and software:</b> input (keyboard), output (screen), processor (CPU), memory (RAM), storage.</li>
+<li><b>Networks and the internet:</b> how data travels between devices.</li>
+</ul>
+</section>
+<section>
+<h3>Digital literacy and online safety</h3>
+<p>You use spreadsheets, word processors, presentations and web tools. Stay safe online: use strong passwords (long, mixed letters, numbers and symbols), never share personal details with strangers, think before you post, watch out for phishing emails, and tell a trusted adult if something upsets you.</p>
+<div class="tip"><b>Python example:</b> <code>for i in range(5): print("Hello")</code> prints Hello five times.</div>
+</section>
+</div>
+
+<div id="tab14" class="tab-pane">
+<section>
+<h1>Physical Education</h1>
+<p>PE keeps you active and healthy, develops skills and teamwork, and teaches you about fitness and how your body works.</p>
+</section>
+<section>
+<h3>Activities</h3>
+<p>You may try team games (football, rugby, netball, basketball, hockey, cricket, rounders), individual sports (athletics, swimming, gymnastics, badminton, tennis), dance, outdoor adventure activities and fitness training.</p>
+</section>
+<section>
+<h3>Components of fitness</h3>
+<ul>
+<li><b>Cardiovascular endurance:</b> keeping going for a long time (long-distance running).</li>
+<li><b>Muscular strength and endurance:</b> force and stamina of muscles.</li>
+<li><b>Flexibility:</b> range of movement at joints.</li>
+<li><b>Speed, agility, balance, coordination, power and reaction time.</b></li>
+</ul>
+</section>
+<section>
+<h3>Warm-up, cool-down and health</h3>
+<p>A <b>warm-up</b> raises your heart rate, loosens joints and prevents injury (pulse raiser, stretches, practice movements). A <b>cool-down</b> slowly lowers heart rate and reduces stiffness. During exercise, your heart beats faster to deliver oxygen to your muscles. Stay hydrated, eat well, and get 8–10 hours of sleep.</p>
+<p>Fair play and <b>sportsmanship</b> matter: respect teammates, opponents and officials, follow the rules, and be a good winner and loser.</p>
+<div class="tip"><b>Remember:</b> bring your correct kit, tell your teacher if you are injured, and give your best effort.</div>
+</section>
+</div>
+
+<div id="tab15" class="tab-pane">
+<section>
+<h1>PSHE</h1>
+<p>PSHE stands for <b>Personal, Social, Health and Economic</b> education. It prepares you for life by teaching you how to look after yourself, get on with others, and make good decisions.</p>
+</section>
+<section>
+<h3>Health and wellbeing</h3>
+<ul>
+<li><b>Mental health:</b> recognising feelings, managing stress and anxiety, and knowing it's OK to ask for help.</li>
+<li><b>Physical health:</b> healthy eating, exercise, sleep and personal hygiene.</li>
+<li><b>Growing up:</b> puberty and the changes in body and emotions.</li>
+<li><b>Risks:</b> drugs, alcohol and smoking or vaping, and how to make safe choices.</li>
+<li><b>First aid basics:</b> knowing how to react in an emergency (call 999).</li>
+</ul>
+</section>
+<section>
+<h3>Relationships</h3>
+<ul>
+<li>Healthy friendships are built on trust, respect, honesty and kindness.</li>
+<li><b>Bullying</b> (including cyberbullying) is never acceptable. If it happens, tell a trusted adult.</li>
+<li>Understanding consent, peer pressure, and how to say "no" confidently.</li>
+<li>Respecting diversity, equality and differences between people.</li>
+</ul>
+</section>
+<section>
+<h3>Living in the wider world</h3>
+<ul>
+<li><b>Money skills:</b> budgeting, saving, borrowing, and what taxes pay for.</li>
+<li><b>Careers:</b> exploring jobs, your strengths and interests, and GCSE options.</li>
+<li><b>Rights and responsibilities:</b> laws, democracy and being an active citizen.</li>
+<li><b>Online world:</b> your digital footprint, privacy and fake news.</li>
+</ul>
+<div class="tip"><b>Who can help?</b> Your form tutor, parents or carers, school counsellor, or Childline (0800 1111, free and confidential).</div>
+</section>
+</div>
+
+</div>
+</div>
+
+<script>
+function switchTab(event, tabId) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>

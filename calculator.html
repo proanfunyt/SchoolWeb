@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Calculator</title>
+    <style>
+:root {
+  --bg-color: #0A0A0C;
+  --card-bg: #16161A;
+  --card-bg-light: #1B1B20;
+  --text-color: #0558c4;
+  --text-muted: #8C8C95;
+  --accent-color: #0e93ec;
+  --accent-hover: #12b0c5c0;
+  --accent-deep: #06669e;
+  --accent-pale: #3bc3f8;
+  --border-color: #2B2620;
+  --border-radius: 4px;
+}
+
+/* CSS Styles */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+.calculator {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  width: 320px;
+  border: 1px solid var(--border-color);
+}
+
+#display {
+  width: 100%;
+  height: 70px;
+  font-size: 2.5rem;
+  text-align: right;
+  margin-bottom: 15px;
+  border: none;
+  background-color: var(--card-bg-light);
+  color: var(--text-color);
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 20px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.btn-num {
+  background-color: var(--card-bg-light);
+  color: var(--text-muted);
+}
+
+.btn-num:hover {
+  background-color: var(--accent-pale);
+  color: var(--bg-color);
+}
+
+.btn-op {
+  background-color: var(--accent-deep);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.btn-op:hover {
+  background-color: var(--accent-color);
+}
+
+.btn-special {
+  background-color: var(--text-muted);
+  color: var(--bg-color);
+}
+
+.btn-special:hover {
+  background-color: var(--accent-pale);
+}
+
+.btn-equal {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  grid-column: span 2;
+  border-radius: 50px;
+}
+
+.btn-equal:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-zero {
+  grid-column: span 2;
+  border-radius: 50px;
+  text-align: left;
+  padding-left: 30px;
+}
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+</style>
+</head>
+<body>
+
+    <!-- HTML Structure -->
+    <div class="calculator">
+        <input type="text" id="display" readonly value="0">
+        <div class="buttons">
+            <button class="btn-special" onclick="clearDisplay()">AC</button>
+            <button class="btn-special" onclick="deleteLast()">DEL</button>
+            <button class="btn-special" onclick="appendValue('%')">%</button>
+            <button class="btn-op" onclick="appendValue('/')">÷</button>
+            
+            <button class="btn-num" onclick="appendValue('7')">7</button>
+            <button class="btn-num" onclick="appendValue('8')">8</button>
+            <button class="btn-num" onclick="appendValue('9')">9</button>
+            <button class="btn-op" onclick="appendValue('*')">×</button>
+            
+            <button class="btn-num" onclick="appendValue('4')">4</button>
+            <button class="btn-num" onclick="appendValue('5')">5</button>
+            <button class="btn-num" onclick="appendValue('6')">6</button>
+            <button class="btn-op" onclick="appendValue('-')">-</button>
+            
+            <button class="btn-num" onclick="appendValue('1')">1</button>
+            <button class="btn-num" onclick="appendValue('2')">2</button>
+            <button class="btn-num" onclick="appendValue('3')">3</button>
+            <button class="btn-op" onclick="appendValue('+')">+</button>
+            
+            <button class="btn-num btn-zero" onclick="appendValue('0')">0</button>
+            <button class="btn-num" onclick="appendValue('.')">.</button>
+            <button class="btn-equal" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Functionality -->
+    <script>
+        const display = document.getElementById('display');
+
+        function appendValue(value) {
+            if (display.value === '0' && value !== '.') {
+                display.value = value;
+            } else {
+                display.value += value;
+            }
+        }
+
+        function clearDisplay() {
+            display.value = '0';
+        }
+
+        function deleteLast() {
+            if (display.value.length === 1) {
+                display.value = '0';
+            } else {
+                display.value = display.value.slice(0, -1);
+            }
+        }
+
+        function calculate() {
+            try {
+                // eval() evaluates string expressions like "2+2"
+                let result = eval(display.value);
+                
+                // Handle division by zero
+                if (!isFinite(result)) {
+                    display.value = "Error";
+                } else {
+                    display.value = result;
+                }
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+
+    </script>
+</body>
+</html>
